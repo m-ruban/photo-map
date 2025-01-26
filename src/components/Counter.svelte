@@ -5,6 +5,10 @@
   }
 </script>
 
-<button onclick={increment}>
+<style lang="less">
+  @import "src/components/counter.less";
+</style>
+
+<button class="test-btn" onclick={increment}>
   count is {count}
 </button>
