@@ -1,0 +1,21 @@
+@count-column: 12;
+@width: 8.33%;
+
+.column {
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.column_layout-center {
+    margin: auto;
+}
+
+each(range(@count-column - 1), {
+    .column-size_@{value} {
+       width: @value * @width;
+    }
+});
+
+.column-size_@{count-column} {
+    width: 100%;
+}
