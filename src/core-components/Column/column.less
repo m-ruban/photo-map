@@ -1,3 +1,5 @@
+@import 'src/styles/screen';
+
 @count-column: 12;
 @width: 8.33%;
 
@@ -10,12 +12,66 @@
     margin: auto;
 }
 
+// xs
 each(range(@count-column - 1), {
-    .column-size_@{value} {
+    .column-xs-size_@{value} {
        width: @value * @width;
     }
 });
 
-.column-size_@{count-column} {
+.column-xs-size_@{count-column} {
     width: 100%;
+}
+
+@media @screen-lt-s {
+    .column-xs-hide {
+        display: none;
+    }
+}
+
+// s
+@media @screen-s {
+    each(range(@count-column - 1), {
+        .column-s-size_@{value} {
+           width: @value * @width;
+        }
+    });
+    
+    .column-s-size_@{count-column} {
+        width: 100%;
+    }
+
+    .column-s-hide {
+        display: none;
+    }
+}
+
+// m
+@media @screen-m {
+    each(range(@count-column - 1), {
+        .column-m-size_@{value} {
+           width: @value * @width;
+        }
+    });
+    
+    .column-m-size_@{count-column} {
+        width: 100%;
+    }
+
+    .column-m-hide {
+        display: none;
+    }
+}
+
+// l
+@media @screen-gt-m {
+    each(range(@count-column - 1), {
+        .column-l-size_@{value} {
+           width: @value * @width;
+        }
+    });
+    
+    .column-l-size_@{count-column} {
+        width: 100%;
+    }
 }
