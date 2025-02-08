@@ -7,7 +7,7 @@
     @import "src/pages-components/Header/header.less";
 </style>
 
-<Column size="1">
+<Column m="1" l="1">
     <div class="header">
         <div class="logo"></div>
         <Title typography="semibold" size="medium">Photo Points</Title>

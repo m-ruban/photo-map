@@ -24,7 +24,7 @@
     @import "src/pages-components/RegistrationFrom/registration-form.less";
 </style>
 
-<Column size="4" layout="center">
+<Column xs="10" s="10" m="5" l="4" layout="center">
     <div class="registration-form">
         <Logo />
         <Title typography="semibold" size="large">Photo Points</Title>

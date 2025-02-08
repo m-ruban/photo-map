@@ -25,7 +25,7 @@
     @import "src/pages-components/LoginForm/login-form.less";
 </style>
 
-<Column size="4" layout="center">
+<Column xs="10" s="10" m="5" l="4" layout="center">
     <div class="login-form">
         <Logo />
         <Title typography="semibold" size="large">Photo Points</Title>
@@ -42,7 +42,9 @@
             <div class="login-form-footer">
                 <div>
                     <Text typography="regular" size="large">Нет учетной записи?</Text>
-                    <Link href="/registration">Создайте ее!</Link>
+                    <div class="login-form-reg-link">
+                        <Link href="/registration">Создайте ее!</Link>
+                    </div>
                 </div>
                 <div class="login-form-action">
                     <Button onclick={sendRequest} icon={Login}>Войти</Button>

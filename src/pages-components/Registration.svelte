@@ -4,7 +4,7 @@
     import RegistrationFrom from 'src/pages-components/RegistrationFrom/RegistrationFrom.svelte';
 </script>
 
-<Container>
+<Container layout='full-page'>
     <Header />
     <RegistrationFrom />
 </Container>

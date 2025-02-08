@@ -4,7 +4,7 @@
     import LoginForm from 'src/pages-components/LoginForm/LoginForm.svelte';
 </script>
 
-<Container>
+<Container layout='full-page'>
     <Header />
     <LoginForm />
 </Container>
