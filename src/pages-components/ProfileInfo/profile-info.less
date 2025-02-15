@@ -1,12 +1,42 @@
 @import 'src/styles/screen';
 
+@margin-top-mobile: 20px;
+@margin-top-desktop: 30px;
+@icon-width: 52px;
+@parent-padding: 15px;
+
+.notification-button {
+    position: absolute;
+    right: 0;
+    top: @margin-top-mobile;
+}
+
+@media @screen-gt-xs {
+    .notification-button {
+        top: @margin-top-desktop;
+    }
+}
+
 .profile-info {
-    display: flex;
-    gap: 20px;
-    margin-top: 30px;
-    max-width: 600px;
+    margin-top: @margin-top-mobile;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media @screen-gt-xs {
+    .profile-info {
+        display: flex;
+        gap: 20px;
+        margin-top: @margin-top-desktop;
+        padding-right: @icon-width + 20; // icon + padding
+    }
+}
+
+@media @screen-gt-s {
+    .profile-info {
+       padding-right: 0px;
+       max-width: 600px;
+    }
 }
 
 .profile-info-avatar {
@@ -26,8 +56,8 @@
 .profile-articles-list {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-left: -@parent-padding;
+    margin-right: -@parent-padding;
 }
 
 .profile-articles-list-tile {
