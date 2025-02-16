@@ -1,8 +1,8 @@
 <script lang="ts">
     import Text from 'src/core-components/Text/Text.svelte';
 
-    let { children = null, icon = null, type = 'primary', ...otherProps } = $props()
-    let hideLabel = children === null
+    let { children = null, icon = null, type = 'primary', ...otherProps } = $props();
+    let hideLabel = children === null;
 </script>
 
 <style lang="less">
@@ -16,7 +16,7 @@
     {...otherProps}
 >
     {#if children}
-        <Text typography="regular" size="medium" style="secondary">
+        <Text typography="medium" size="medium" style="secondary">
             {@render children?.()}
         </Text>
     {/if}
