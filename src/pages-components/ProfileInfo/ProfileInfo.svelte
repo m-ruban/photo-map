@@ -4,11 +4,14 @@
     import Title from 'src/core-components/Title/Title.svelte';
     import Text from 'src/core-components/Text/Text.svelte';
     import Button from 'src/core-components/Button/Button.svelte';
-    import AddAlert from 'src/core-components/Icon/AddAlert.svelte';
+    import NotificationsAdd from 'src/core-components/Icon/NotificationsAdd.svelte';
     import VSpace from 'src/core-components/VSpace/VSpace.svelte';
+    import Dropdown from 'src/core-components/Dropdown/Dropdown.svelte';
 
     import ArticleItem from 'src/pages-components/ArticleItem/ArticleItem.svelte';
     import NoticeButton from 'src/pages-components/NoticeButton/NoticeButton.svelte';
+
+    let buttonNoticeRef: HTMLElement | null = null;
 
     function sendRequest() {
 		console.log('sendRequest');
@@ -20,8 +23,9 @@
 </style>
 
 <Column xs="11" s="10" m="9" l="9" layout="horizontal-center">
-    <div class="notification-button">
+    <div class="notification-button" bind:this={buttonNoticeRef}>
         <NoticeButton />
+        <Dropdown activator={buttonNoticeRef} position="right" />
     </div>
     <div class="profile-info">
         <div class="profile-info-avatar">
@@ -41,7 +45,7 @@
             </div>
             <VSpace height="20" />
             <div>
-                <Button onclick={sendRequest} icon={AddAlert}>Подписаться</Button>
+                <Button onclick={sendRequest} icon={NotificationsAdd}>Подписаться</Button>
             </div>
         </div>
     </div>

@@ -3,7 +3,11 @@
     import NotificationsEmpty from 'src/core-components/Icon/NotificationsEmpty.svelte';
     import NotificationsUnread from 'src/core-components/Icon/NotificationsUnread.svelte';
 
-    let { haveUnreadNotifications = true } = $props();
+    interface NoticeButtonProps {
+        haveUnreadNotifications?: boolean;
+    }
+
+    let { haveUnreadNotifications = true }: NoticeButtonProps= $props();
 </script>
 
 <Button icon={haveUnreadNotifications ? NotificationsUnread : NotificationsEmpty} type="secondary" />
