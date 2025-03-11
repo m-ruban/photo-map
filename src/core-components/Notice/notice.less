@@ -1,0 +1,28 @@
+.notice {
+    display: flex;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(172, 172, 172, 0.1);
+    gap: 15px;
+    align-items: center;
+
+    &:last-of-type {
+        border-bottom: none;
+    }
+}
+
+.notice-button-wrapper {
+    margin-left: auto;
+}
+
+.notice-button {
+    border: none;
+    background: none;
+    transition: transform 100ms ease-in;
+
+    &:active {
+        transform: scale(0.95);
+    }
+}

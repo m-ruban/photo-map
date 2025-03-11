@@ -7,6 +7,7 @@
     import NotificationsAdd from 'src/core-components/Icon/NotificationsAdd.svelte';
     import VSpace from 'src/core-components/VSpace/VSpace.svelte';
     import Dropdown from 'src/core-components/Dropdown/Dropdown.svelte';
+    import NoticeList from 'src/core-components/NoticeList/NoticeList.svelte';
 
     import ArticleItem from 'src/pages-components/ArticleItem/ArticleItem.svelte';
     import NoticeButton from 'src/pages-components/NoticeButton/NoticeButton.svelte';
@@ -25,7 +26,9 @@
 <Column xs="11" s="10" m="9" l="9" layout="horizontal-center">
     <div class="notification-button" bind:this={buttonNoticeRef}>
         <NoticeButton />
-        <Dropdown activator={buttonNoticeRef} position="right" />
+        <Dropdown activator={buttonNoticeRef} position="right">
+            <NoticeList />
+        </Dropdown>
     </div>
     <div class="profile-info">
         <div class="profile-info-avatar">
