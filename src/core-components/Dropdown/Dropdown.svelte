@@ -1,9 +1,11 @@
 <script lang="ts">
+    import type { Snippet } from 'svelte';
     import Portal from "src/core-components/Portal/Portal.svelte";
 
     interface DropdownProps {
         activator: HTMLElement | null;
         position?: string;
+        children: Snippet;
     }
 
     interface DropdownMetrics {
@@ -12,7 +14,7 @@
         right?: string;
     }
 
-    let { activator, position = 'left' }: DropdownProps = $props();
+    let { activator, position = 'left', children }: DropdownProps = $props();
     let show: boolean = $state(false);
     let dropdownStyles: DropdownMetrics = $state({ top: "0px" });
     let dropdownRef: HTMLDivElement | null = $state(null);
@@ -74,7 +76,7 @@
                 ${dropdownStyles.right ? `right:${dropdownStyles.right};` : ''}
             `}
         >
-            Test drop content11111
+            {@render children?.()}
         </div>
     </Portal>
 {/if}
