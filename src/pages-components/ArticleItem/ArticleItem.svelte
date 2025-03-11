@@ -8,10 +8,16 @@
     import Location from 'src/core-components/Icon/Location.svelte';
     import Favorite from 'src/core-components/Icon/Favorite.svelte';
     import Checklist from 'src/core-components/Icon/Checklist.svelte';
+    import DeleteSecondary from 'src/core-components/Icon/DeleteSecondary.svelte';
+    import Edit from 'src/core-components/Icon/Edit.svelte';
+    import Report from 'src/core-components/Icon/Report.svelte';
+    import Dropdown from 'src/core-components/Dropdown/Dropdown.svelte';
+    import ActionCell from 'src/core-components/ActionCell/ActionCell.svelte';
 
     let { user, article, layout = 'tile' } = $props();
     const { avatar, login } = user;
     const { images, point, description } = article;
+    let buttonMoreRef: HTMLElement | null = $state(null);;
 </script>
 
 <style lang="less">
@@ -24,9 +30,14 @@
         <span class="article-item-profile-login">
             <Link href={`/profile/${login}`}>{login}</Link>
         </span>
-        <div class="article-item-profile-actions">
+        <div class="article-item-profile-actions" bind:this={buttonMoreRef}>
             <More />
         </div>
+        <Dropdown activator={buttonMoreRef} position="right">
+            <ActionCell icon={Edit} onClick={() => null}>Редактировать</ActionCell>
+            <ActionCell icon={DeleteSecondary} onClick={() => null}>Удалить</ActionCell>
+            <ActionCell icon={Report} onClick={() => null}>Пожаловаться</ActionCell>
+        </Dropdown>
     </div>
     <VSpace height="15" />
     <div class="article-item-images">

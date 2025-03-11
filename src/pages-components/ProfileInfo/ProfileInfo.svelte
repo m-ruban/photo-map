@@ -12,7 +12,7 @@
     import ArticleItem from 'src/pages-components/ArticleItem/ArticleItem.svelte';
     import NoticeButton from 'src/pages-components/NoticeButton/NoticeButton.svelte';
 
-    let buttonNoticeRef: HTMLElement | null = null;
+    let buttonNoticeRef: HTMLElement | null = $state(null);
 
     function sendRequest() {
 		console.log('sendRequest');
