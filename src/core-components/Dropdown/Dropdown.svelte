@@ -1,36 +1,47 @@
 <script lang="ts">
     import type { Snippet } from 'svelte';
+    import { tick } from 'svelte';
     import Portal from "src/core-components/Portal/Portal.svelte";
+
+    type Position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
     interface DropdownProps {
         activator: HTMLElement | null;
-        position?: string;
+        position?: Position;
         children: Snippet;
     }
 
     interface DropdownMetrics {
-        top: string;
+        top?: string;
         left?: string;
         right?: string;
+        bottom?: string;
     }
 
-    let { activator, position = 'left', children }: DropdownProps = $props();
+    let { activator, position = 'bottom-left', children }: DropdownProps = $props();
     let show: boolean = $state(false);
-    let dropdownStyles: DropdownMetrics = $state({ top: "0px" });
+    let dropdownStyles: DropdownMetrics = $state({});
     let dropdownRef: HTMLDivElement | null = $state(null);
+    let dropdownBodyRef: HTMLElement | null = $state(null);
   
-    const toggleShown = () => {
+    const toggleShown = async () => {
         show = !show;
+        await tick();
+        if (!activator || !dropdownBodyRef) return;
         if (show && activator) {
             const buttonRect = activator.getBoundingClientRect();
-            dropdownStyles = {
-                top: `${buttonRect.bottom + window.scrollY}px`,
-            };
-            if (position === 'left') {
+            const dropdownBodyRect = dropdownBodyRef.getBoundingClientRect();
+            if (position.includes('bottom')) {
+                dropdownStyles.top = `${buttonRect.bottom + window.scrollY}px`;
+            }
+            if (position.includes('top')) {
+                dropdownStyles.top = `${buttonRect.top - dropdownBodyRect.height + window.scrollY}px`;
+            }
+            if (position.includes('left')) {
                 dropdownStyles.left = `${buttonRect.left + window.scrollX}px`;
             }
-            if (position === 'right') {
-                dropdownStyles.right = `${window.innerWidth - buttonRect.width - buttonRect.left}px`;
+            if (position.includes('right')) {
+                dropdownStyles.left = `${buttonRect.right - dropdownBodyRect.width + window.scrollX}px`;
             }
         }
     }
@@ -69,16 +80,15 @@
     <Portal>
         <div
             bind:this={dropdownRef}
-            class="dropdown-menu"
+            class={`dropdown-menu dropdown-menu_position-${position}`}
             style={`
                 ${dropdownStyles.top ? `top:${dropdownStyles.top};` : ''}
                 ${dropdownStyles.left ? `left:${dropdownStyles.left};` : ''}
                 ${dropdownStyles.right ? `right:${dropdownStyles.right};` : ''}
+                ${dropdownStyles.bottom ? `bottom:${dropdownStyles.bottom};` : ''}
             `}
         >
-            {@render children?.()}
+            <div bind:this={dropdownBodyRef}>{@render children?.()}</div>
         </div>
     </Portal>
 {/if}
-
-  
