@@ -33,7 +33,7 @@
         <div class="article-item-profile-actions" bind:this={buttonMoreRef}>
             <More />
         </div>
-        <Dropdown activator={buttonMoreRef} position="right">
+        <Dropdown activator={buttonMoreRef} position="bottom-right">
             <ActionCell icon={Edit} onClick={() => null}>Редактировать</ActionCell>
             <ActionCell icon={DeleteSecondary} onClick={() => null}>Удалить</ActionCell>
             <ActionCell icon={Report} onClick={() => null}>Пожаловаться</ActionCell>

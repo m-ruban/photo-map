@@ -26,7 +26,7 @@
 <Column xs="11" s="10" m="9" l="9" layout="horizontal-center">
     <div class="notification-button" bind:this={buttonNoticeRef}>
         <NoticeButton />
-        <Dropdown activator={buttonNoticeRef} position="right">
+        <Dropdown activator={buttonNoticeRef} position="bottom-right">
             <NoticeList />
         </Dropdown>
     </div>
