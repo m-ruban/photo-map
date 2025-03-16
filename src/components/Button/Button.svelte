@@ -1,7 +1,7 @@
 <script lang="ts">
     import Text from 'src/components/Text/Text.svelte';
 
-    let { children = null, icon = null, type = 'primary', ...otherProps } = $props();
+    let { children = null, icon = null, type = 'primary', stretched = false, ...otherProps } = $props();
     let hideLabel = children === null;
 </script>
 
@@ -12,6 +12,7 @@
 <button
     class={`button button_type-${type}`}
     class:button_hile-label={hideLabel}
+    class:button_stretched={stretched}
     type="button"
     {...otherProps}
 >
