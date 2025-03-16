@@ -1,0 +1,20 @@
+@padding: 25px;
+@scroll-width: 10px;
+
+.side-bar {
+    height: calc(100vh - @padding * 2);
+    overflow: auto;
+    margin-top: @padding;
+    margin-right: @padding - @scroll-width;
+    padding-right: @scroll-width;
+}
+
+.side-bar-header {
+    margin-bottom: @padding;
+    display: flex;
+    gap: @padding;
+}
+
+.side-bar-header-add-item {
+    flex-grow: 1;
+}
