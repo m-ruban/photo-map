@@ -6,14 +6,10 @@
     import Button from 'src/components/Button/Button.svelte';
     import NotificationsAdd from 'src/components/Icon/NotificationsAdd.svelte';
     import VSpace from 'src/components/VSpace/VSpace.svelte';
-    import Dropdown from 'src/components/Dropdown/Dropdown.svelte';
-    import NoticeList from 'src/components/NoticeList/NoticeList.svelte';
 
     import ArticleItem from 'src/pages/components/ArticleItem/ArticleItem.svelte';
     import NoticeButton from 'src/pages/components/NoticeButton/NoticeButton.svelte';
-
-    let buttonNoticeRef: HTMLElement | null = $state(null);
-
+    
     function sendRequest() {
 		console.log('sendRequest');
 	}
@@ -24,11 +20,8 @@
 </style>
 
 <Column xs="11" s="10" m="9" l="9" layout="horizontal-center">
-    <div class="notification-button" bind:this={buttonNoticeRef}>
+    <div class="notification-button">
         <NoticeButton />
-        <Dropdown activator={buttonNoticeRef} position="bottom-right">
-            <NoticeList />
-        </Dropdown>
     </div>
     <div class="profile-info">
         <div class="profile-info-avatar">
